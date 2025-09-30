@@ -12,13 +12,15 @@ app.use(bodyParser.json());
 app.use('/tasks', taskRoutes);
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://mernuser:mernpass@gui.844sh.mongodb.net/mern-todo?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('MongoDB connected'))
+mongoose.connect('mongodb+srv://mernuser:mernpass@gui.844sh.mongodb.net/mern-todo?retryWrites=true&w=majority')
+  .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// ✅ Export both app and server
+let server;
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = process.env.PORT || 5000;
+  server = app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
 
-module.exports = app; // For testing
+module.exports = { app, server };
