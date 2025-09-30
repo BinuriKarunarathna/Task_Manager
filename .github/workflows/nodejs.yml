@@ -8,9 +8,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - run: npm install
-      - run: npm test
+          
+      - name: Install dependencies
+        run: |
+          cd backend      # go to the folder with package.json
+          npm install
+          
+      - name: Run tests
+        run: |
+          cd backend
+          npm test
