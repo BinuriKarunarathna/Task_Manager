@@ -18,6 +18,7 @@ jobs:
         run: |
           cd backend      # go to the folder with package.json
           npm install
+          npm ci
           
       - name: Run tests
         run: |
