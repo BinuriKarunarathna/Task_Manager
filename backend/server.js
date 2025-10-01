@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const taskRoutes = require('./routes/taskRoutes');
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
@@ -10,9 +11,9 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/tasks', taskRoutes);
-
+const { DB_USERNAME, DB_PASSWORD, DB_CLUSTER, DB_NAME } = process.env;
 // MongoDB connection
-mongoose.connect('mongodb+srv://mernuser:mernpass@gui.844sh.mongodb.net/mern-todo?retryWrites=true&w=majority')
+mongoose.connect(`mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_CLUSTER}/${DB_NAME}?retryWrites=true&w=majority`)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
