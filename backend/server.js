@@ -29,10 +29,10 @@ try {
 
 // ✅ Export both app and server
 const server =
-  process.env.NODE_ENV !== "test"
-    ? app.listen(process.env.PORT || 5000, () =>
+  process.env.NODE_ENV === "test"
+    ? null
+    : app.listen(process.env.PORT || 5000, () =>
         console.log(`Server running on port ${process.env.PORT || 5000}`)
-      )
-    : null;
+      );
 
 export { app, server };
