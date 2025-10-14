@@ -24,6 +24,14 @@
   },
   "type": "module",
   "jest": {
-    "transform": {}
+    "preset": "@babel/preset-env",
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "extensionsToTreatAsEsm": [".js"],
+    "globals": {
+      "window": {}
+    },
+    "testEnvironment": "node"
   }
 }

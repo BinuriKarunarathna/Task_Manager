@@ -1,5 +1,6 @@
 import request from 'supertest';
 import { app, server } from '../server.js';
+import mongoose from 'mongoose';
 
 describe('Task API Unit Tests', () => {
   it('should create a new task', async () => {
@@ -22,7 +23,6 @@ describe('Task API Unit Tests', () => {
 
 // ✅ Cleanup after all tests
 afterAll(async () => {
-  const mongoose = require('mongoose');
   await mongoose.connection.close();
   if (server) server.close();
 });
