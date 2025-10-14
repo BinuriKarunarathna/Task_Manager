@@ -1,5 +1,5 @@
-const express = require('express');
-const Task = require('../models/Task');
+import express from 'express';
+import Task from '../models/Task.js';
 const router = express.Router();
 
 // Get all tasks
@@ -35,4 +35,4 @@ router.delete('/:id', async (req, res) => {
   res.status(204).send();
 });
 
-module.exports = router;
+export default router;
