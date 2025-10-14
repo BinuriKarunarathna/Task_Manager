@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
@@ -24,14 +24,11 @@
   },
   "type": "module",
   "jest": {
-    "preset": "@babel/preset-env",
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    },
     "extensionsToTreatAsEsm": [".js"],
     "globals": {
       "window": {}
     },
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "transform": {}
   }
 }
