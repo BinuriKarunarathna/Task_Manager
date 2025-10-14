@@ -1,5 +1,5 @@
-const request = require('supertest');
-const { app, server } = require('../server'); // Import both
+import request from 'supertest';
+import { app, server } from '../server.js';
 
 describe('Task API Unit Tests', () => {
   it('should create a new task', async () => {
